@@ -1,0 +1,72 @@
+<main class="container-fluid col-6">
+  <section class="card mb-3">
+    <div class="card-body">
+      <h5 class="card-title">Formulario</h5>
+
+      <form [formGroup]="estudianteForm" (ngSubmit)="onSubmit()" class="row">
+        <div class="col-6 row g-3">
+          <div class="col">
+            <input
+              formControlName="nombre"
+              type="text"
+              [class.is-invalid]=
+              "nombreControl.invalid && nombreControl.touched"
+              class="form-control"
+              placeholder="Nombre"
+              aria-label="Nombre"
+            />
+            <div *ngIf="nombreControl.hasError('required')" class="invalid-feeback">
+              Es requerido
+            </div>
+          </div>
+
+
+          <div class="col">
+            <input
+              [class.is-invalid]=
+              "apellidoControl.invalid && apellidoControl.touched"          
+              formControlName="apellido"
+              type="text"
+              class="form-control"
+              placeholder="Apellido"
+              aria-label="Apellido"
+            />
+            <div *ngIf="apellidoControl.hasError('required')" class="invalid-feeback">
+              Es requerido
+            </div>
+          
+
+          </div>
+
+
+          <div class="col-12">
+            <input
+              [class.is-invalid]="emailControl.invalid && emailControl.touched"
+              [formControl]="emailControl"
+              type="email"
+              class="form-control"
+              placeholder="Email"
+              aria-label="Email"
+            />
+            
+            
+           
+          </div>
+
+
+        </div>
+        
+        <div class="col-12 mt-3">
+          <button class="btn btn-primary" type="submit">Registrar</button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <section class="card col-12">
+    <div class="card-body">
+      <h5 class="card-title">Listado</h5>
+      <pre>{{ estudiantes | json }}</pre>
+    </div>
+  </section>
+</main>
